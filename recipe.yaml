@@ -2,8 +2,8 @@ name: 'ZenESX Framework'
 version: '1.0.0'
 description: 'Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration, Loading Screen mit Musik und automatischen GitHub Updates'
 author: 'Zen Scripts'
-url: 'https://github.com/zenscripts/zenesx-framework'
-documentation: 'https://github.com/zenscripts/zenesx-framework/wiki'
+url: 'https://github.com/zen-scripting/ZenESX-Framework'
+documentation: 'https://github.com/zen-scripting/ZenESX-Frameworki'
 
 # GitHub Integration für automatische Updates
 github:
@@ -284,4 +284,5 @@ support:
 license:
   type: 'Custom'
   description: 'Erlaubt für eigene Server, Weiterverkauf untersagt'
+
   copyright: '© 2024 Zen Scripts'

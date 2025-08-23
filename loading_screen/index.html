@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenESX Framework - Loading</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading-container">
+        <div class="background-overlay"></div>
+        
+        <!-- Audio Element für Hintergrundmusik -->
+        <audio id="backgroundMusic" loop>
+            <source src="music/musik.mp3" type="audio/mpeg">
+            Dein Browser unterstützt das Audio-Element nicht.
+        </audio>
+        
+        <!-- Audio Control Button -->
+        <div class="audio-controls">
+            <button id="muteButton" class="audio-btn">🔊</button>
+            <div class="volume-control">
+                <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+            </div>
+        </div>
+        
+        <div class="logo-container">
+            <h1 class="logo-text">ZenESX</h1>
+            <h2 class="subtitle">Framework</h2>
+            <p class="framework-description">
+                Erlebe das ultimative Roleplay-Erlebnis mit unserem erweiterten ESX Framework. 
+                Vollgepackt mit Features, Jobs und endlosen Möglichkeiten für dein perfektes RP-Abenteuer.
+            </p>
+        </div>
+        
+        <div class="loading-section">
+            <div class="loading-bar-container">
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loadingProgress"></div>
+                </div>
+                <div class="loading-percentage" id="loadingPercentage">0%</div>
+            </div>
+            
+            <div class="status-container">
+                <div class="status-item" id="status1">
+                    <span class="status-icon">⚡</span>
+                    <span class="status-text">Framework wird initialisiert...</span>
+                </div>
+                <div class="status-item" id="status2">
+                    <span class="status-icon">🌐</span>
+                    <span class="status-text">Verbindung zum Server...</span>
+                </div>
+                <div class="status-item" id="status3">
+                    <span class="status-icon">📦</span>
+                    <span class="status-text">Erweiterte Scripts werden geladen...</span>
+                </div>
+                <div class="status-item" id="status4">
+                    <span class="status-icon">👤</span>
+                    <span class="status-text">Spielerdaten werden geladen...</span>
+                </div>
+                <div class="status-item" id="status5">
+                    <span class="status-icon">💼</span>
+                    <span class="status-text">Jobs & Fraktionen werden synchronisiert...</span>
+                </div>
+                <div class="status-item" id="status6">
+                    <span class="status-icon">✅</span>
+                    <span class="status-text">Bereit zum Spielen!</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <div class="server-info">
+                <h3>🎵 Aktuelle Musik</h3>
+                <p><strong>Track:</strong> Chill Gaming Vibes</p>
+                <p><strong>Künstler:</strong> LoFi Gaming Beats</p>
+                <p class="music-description">Entspannende Hintergrundmusik für dein Gaming-Erlebnis</p>
+            </div>
+            
+            <div class="framework-features">
+                <h3>✨ Framework Features</h3>
+                <ul>
+                    <li>🚗 50+ Fahrzeugmodelle</li>
+                    <li>💼 25+ einzigartige Jobs</li>
+                    <li>🏠 Immobiliensystem</li>
+                    <li>📱 Smartphone Integration</li>
+                    <li>🏪 Erweiterte Shops</li>
+                    <li>⚖️ Justiz & Polizei System</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Tipp</h3>
+                <p id="loadingTip">Verwende /help um alle verfügbaren Befehle anzuzeigen!</p>
+            </div>
+        </div>
+        
+        <div class="footer-info">
+            <p>© 2024 ZenESX Framework | Version 1.0.0 | Discord: discord.gg/zenscripts</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

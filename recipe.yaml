@@ -3,17 +3,17 @@ $minFxVersion: 2545
 $onesync: on
 name: ZenESX Framework
 version: 1.0.0
-author: Zen Scripts  
-description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration, Loading Screen mit Musik und erweiterten Features
+author: Zen Scripts
+description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration und Loading Screen
 
 tasks:
-  # Download ZenESX Framework (Custom Components)
+  # Download ZenESX Framework
   - action: download_github
     src: https://github.com/zen-scripting/ZenESX-Framework
     ref: main
     dest: ./tmp
 
-  # Move ZenESX Custom Resources
+  # Move ZenESX Resources
   - action: move_path
     src: ./tmp/loading_screen
     dest: ./resources/loading_screen
@@ -42,46 +42,41 @@ tasks:
     src: ./tmp/[cayo]
     dest: ./resources/[cayo]
 
-  # Use ZenESX Database Schema
   - action: move_path
     src: ./tmp/zen.sql
     dest: ./zen.sql
 
-  # Cleanup temp folder
   - action: remove_path
     path: ./tmp
 
-  # Download ESX Legacy Core
+  # Download ESX Core
   - action: download_github
     src: https://github.com/esx-framework/esx_core
     ref: main
     dest: ./resources/[esx]/es_extended
 
-  # Download oxmysql (Database)
+  # Download Dependencies
   - action: download_github
     src: https://github.com/overextended/oxmysql
     ref: main
     dest: ./resources/oxmysql
 
-  # Download ox_lib (Library)
   - action: download_github
     src: https://github.com/overextended/ox_lib
     ref: main
     dest: ./resources/ox_lib
 
-  # Download ox_inventory
   - action: download_github
     src: https://github.com/overextended/ox_inventory
     ref: main
     dest: ./resources/ox_inventory
 
-  # Download pma-voice
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     ref: main
     dest: ./resources/pma-voice
 
-  # ESX Jobs
+  # Download ESX Jobs
   - action: download_github
     src: https://github.com/esx-framework/esx_policejob
     ref: main
@@ -102,7 +97,7 @@ tasks:
     ref: main
     dest: ./resources/[esx]/esx_taxijob
 
-  # ESX Core Scripts
+  # Download ESX Scripts
   - action: download_github
     src: https://github.com/esx-framework/esx_society
     ref: main
@@ -143,7 +138,6 @@ tasks:
     ref: main
     dest: ./resources/[esx]/esx_license
 
-  # Additional ESX Resources
   - action: download_github
     src: https://github.com/esx-framework/esx_basicneeds
     ref: main
@@ -179,54 +173,39 @@ tasks:
     ref: main
     dest: ./resources/[esx]/esx_multicharacter
 
-  # Import ZenESX Database Schema (including ZS Banking)
+  # Import Database
   - action: query_database
     file: ./zen.sql
 
-  # Write basic server.cfg
+  # Write server.cfg
   - action: write_file
     file: ./server.cfg
     data: |
-      # ZenESX Framework Server Configuration
       sv_hostname "{{Server Name}}"
       sv_maxclients {{Max Players}}
-      
-      # Database
       set mysql_connection_string "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-      
-      # OneSync
       set onesync on
-      
-      # Server Key (set your own)
       sv_licenseKey "YOUR_LICENSE_KEY_HERE"
-      
-      # ZenESX Custom Components
       ensure loading_screen
       ensure zs_banking
       ensure zenesx_update_system
       ensure zenesx_admin_system
       ensure zenesx_performance_monitor
       ensure zenesx_backup_system
-      
-      # Cayo Perico Integration
       ensure "[cayo]/cayo minimap"
       ensure "[cayo]/cayo resurces"
       ensure "[cayo]/cayo shops"
       ensure "[cayo]/cayo tor"
       ensure "[cayo]/Cayo_Bridge"
-      
-      # ESX Legacy Core
       ensure es_extended
       ensure oxmysql
       ensure ox_lib
-      
-      # ESX Jobs
+      ensure ox_inventory
+      ensure pma-voice
       ensure esx_policejob
       ensure esx_ambulancejob
       ensure esx_mechanicjob
       ensure esx_taxijob
-      
-      # ESX Basic Components
       ensure esx_society
       ensure esx_garage
       ensure esx_shops
@@ -242,19 +221,11 @@ tasks:
       ensure esx_addoninventory
       ensure esx_identity
       ensure esx_multicharacter
-      
-      # Inventory & Voice
-      ensure ox_inventory
-      ensure pma-voice
-      
-      # Admin permissions
       add_principal identifier.{{Admin Steam ID}} group.admin
       add_ace group.admin command allow
       add_ace group.admin command.quit deny
       add_ace resource.es_extended command.add_ace allow
       add_ace resource.es_extended command.add_principal allow
-      
-      # End of configuration
 
 variables:
   - name: Database Host
@@ -263,7 +234,7 @@ variables:
     default: localhost
 
   - name: Database Name
-    description: MySQL Database Name  
+    description: MySQL Database Name
     type: text
     default: zenesx
 

@@ -14,7 +14,6 @@ A complete, extensible ESX-based framework for FiveM servers with modern banking
 - **Professional Documentation** - Complete setup guides
 
 ### 🏦 **ZS Banking System**
-- **Crypto Trading** - Bitcoin, Ethereum, Cardano and more
 - **Player Transfers** - Send money between players
 - **Transaction History** - Complete banking records
 - **ATM & Bank Networks** - Multiple locations with different features
@@ -305,4 +304,5 @@ add_ace group.helper zenesx.helper allow
 4. **🎮 Enjoy:** Your enhanced FiveM server experience!
 
 **Happy Role Playing! 🎮✨**
+
 

@@ -121,7 +121,7 @@ ZenESX Framework/
 3. **Suche:** "ZenESX Framework" 
 4. **Oder Recipe-URL verwenden:** 
    ```
-   https://github.com/zenscripts/zenesx-framework/raw/main/recipe.yaml
+   [https://github.com/zenscripts/zenesx-framework/raw/main/recipe.yaml]
    ```
 5. **Konfigurieren:** Datenbank, Admin-Einstellungen
 6. **Deployen:** Automatische Installation
@@ -306,3 +306,4 @@ add_ace group.helper zenesx.helper allow
 4. **🎮 Genießen:** Dein verbessertes FiveM Server-Erlebnis!
 
 **Happy Role Playing! 🎮✨**
+

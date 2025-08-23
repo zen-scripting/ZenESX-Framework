@@ -293,7 +293,6 @@ add_ace group.helper zenesx.helper allow
 ### **Credits**
 - **Development:** Zen Scripts Team
 - **Based on:** ESX Legacy Framework
-- **Inspired by:** PlumeESX Template
 - **Special Thanks:** ESX Legacy Community & Contributors
 
 ---

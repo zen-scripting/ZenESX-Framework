@@ -22,12 +22,12 @@
 3. Search: "ZenESX Framework" 
 4. Or use Recipe URL / Oder Recipe-URL verwenden:
    ```
-  https://github.com/zen-scripting/ZenESX-Framework/tree/main
+  https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
    ```
 
 #### **Manual Installation / Manuelle Installation:**
 ```bash
-git clone https://github.com/zen-scripting/ZenESX-Framework/blob/main/recipe.yaml
+git clone [https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml]
 # See INSTALLATION.md for complete setup / Siehe INSTALLATION.md für vollständige Installation
 ```
 

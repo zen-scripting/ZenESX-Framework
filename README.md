@@ -4,7 +4,8 @@
 - 🇩🇪 **[Deutsch](README_DE.md)** - Deutsche Dokumentation
 - 🇺🇸 **[English](README_EN.md)** - English Documentation
 
-install for tx admin: https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
+install for tx admin: In TX Admin click on Remote URL Template and paste the link there simply copy and paste
+https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
 
 ---
 

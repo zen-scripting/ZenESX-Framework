@@ -52,7 +52,7 @@ tasks:
   # Download ESX Core
   - action: download_github
     src: https://github.com/esx-framework/esx_core
-    ref: main
+    ref: master
     dest: ./resources/[esx]/es_extended
 
   # Download Dependencies
@@ -63,114 +63,114 @@ tasks:
 
   - action: download_github
     src: https://github.com/overextended/ox_lib
-    ref: main
+    ref: master
     dest: ./resources/ox_lib
 
   - action: download_github
     src: https://github.com/overextended/ox_inventory
-    ref: main
+    ref: master
     dest: ./resources/ox_inventory
 
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
-    ref: main
+    ref: master
     dest: ./resources/pma-voice
 
   # Download ESX Jobs
   - action: download_github
     src: https://github.com/esx-framework/esx_policejob
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_policejob
 
   - action: download_github
     src: https://github.com/esx-framework/esx_ambulancejob
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_ambulancejob
 
   - action: download_github
     src: https://github.com/esx-framework/esx_mechanicjob
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_mechanicjob
 
   - action: download_github
     src: https://github.com/esx-framework/esx_taxijob
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_taxijob
 
   # Download ESX Scripts
   - action: download_github
     src: https://github.com/esx-framework/esx_society
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_society
 
   - action: download_github
     src: https://github.com/esx-framework/esx_garage
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_garage
 
   - action: download_github
     src: https://github.com/esx-framework/esx_shops
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_shops
 
   - action: download_github
     src: https://github.com/esx-framework/esx_clotheshop
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_clotheshop
 
   - action: download_github
     src: https://github.com/esx-framework/esx_barbershop
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_barbershop
 
   - action: download_github
     src: https://github.com/esx-framework/esx_vehicleshop
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_vehicleshop
 
   - action: download_github
     src: https://github.com/esx-framework/esx_weaponshop
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_weaponshop
 
   - action: download_github
     src: https://github.com/esx-framework/esx_license
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_license
 
   - action: download_github
     src: https://github.com/esx-framework/esx_basicneeds
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_basicneeds
 
   - action: download_github
     src: https://github.com/esx-framework/esx_status
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_status
 
   - action: download_github
     src: https://github.com/esx-framework/esx_datastore
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_datastore
 
   - action: download_github
     src: https://github.com/esx-framework/esx_addonaccount
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_addonaccount
 
   - action: download_github
     src: https://github.com/esx-framework/esx_addoninventory
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_addoninventory
 
   - action: download_github
     src: https://github.com/esx-framework/esx_identity
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_identity
 
   - action: download_github
     src: https://github.com/esx-framework/esx_multicharacter
-    ref: main
+    ref: master
     dest: ./resources/[esx]/esx_multicharacter
 
   # Import Database

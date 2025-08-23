@@ -130,7 +130,7 @@ ZenESX Framework/
 
 ```bash
 # Clone the repository
-git clone https://github.com/zenscripts/zenesx-framework.git
+git clone https://github.com/zen-scripting/ZenESX-Framework/blob/main/recipe.yaml
 
 # Copy resources to your FiveM server
 cp -r zenesx_* /path/to/fivem/resources/
@@ -270,7 +270,6 @@ add_ace group.helper zenesx.helper allow
 
 ### **Get Help**
 - 🎮 **Discord:** [discord.gg/zenscripts](https://discord.gg/zenscripts)
-- 🌐 **Website:** [zenscripts.de](https://zenscripts.de)
 - 📖 **Documentation:** See INSTALLATION.md for detailed setup
 - 🐛 **Bug Reports:** GitHub Issues
 
@@ -306,3 +305,4 @@ add_ace group.helper zenesx.helper allow
 4. **🎮 Enjoy:** Your enhanced FiveM server experience!
 
 **Happy Role Playing! 🎮✨**
+

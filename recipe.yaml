@@ -1,288 +1,168 @@
-name: 'ZenESX Framework'
-version: '1.0.0'
-description: 'Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration, Loading Screen mit Musik und automatischen GitHub Updates'
-author: 'Zen Scripts'
-url: 'https://github.com/zen-scripting/ZenESX-Framework'
-documentation: 'https://github.com/zen-scripting/ZenESX-Frameworki'
+$engine: 3
+$minFxVersion: 2545
+$onesync: on
+name: ZenESX Framework
+version: 1.0.0
+author: Zen Scripts
+description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration, Loading Screen mit Musik und automatischen GitHub Updates
 
-# GitHub Integration für automatische Updates
-github:
-  repository: 'zenscripts/zenesx-framework'
-  branch: 'main'
-  auto_update_check: true
-  update_notifications: true
-  check_interval: 3600 # Sekunden (1 Stunde)
+tasks:
 
-# Framework Version
-framework: 'esx-legacy'
+  # Download ZenESX Framework
+  - action: download_github
+    src: https://github.com/zen-scripting/ZenESX-Framework
+    ref: main
+    dest: ./tmp
 
-# Abhängigkeiten
-dependencies:
-  - 'es_extended'
-  - 'oxmysql'
-  - 'ox_lib'
+  # Database Setup
+  - action: move_path
+    src: ./tmp/zen.sql
+    dest: ./zen.sql
 
-# ZenESX Kernressourcen
-core_resources:
-  - name: 'loading_screen'
-    description: 'Custom Loading Screen mit Musik und Audio-Controls'
-    required: true
-  - name: 'zs_banking'
-    description: 'Premium Banking System mit Crypto-Trading'
-    required: true
-  - name: 'zenesx_core'
-    description: 'Haupt-Framework mit Update-System'
-    required: true
+  - action: query_database
+    file: ./zen.sql
 
-# Cayo Perico Erweiterungen
-cayo_resources:
-  - name: '[cayo]/cayo minimap'
-    description: 'Erweiterte Cayo Perico Minimap'
-    required: false
-  - name: '[cayo]/cayo resurces'
-    description: 'Cayo Perico Basis-IPLs'
-    required: false
-  - name: '[cayo]/cayo shops'
-    description: 'Shops und Bank auf Cayo Perico'
-    required: false
-  - name: '[cayo]/cayo tor'
-    description: 'El Rubio Mansion Gate System'
-    required: false
-  - name: '[cayo]/Cayo_Bridge'
-    description: 'Brücke zwischen Los Santos und Cayo Perico'
-    required: false
+  # Core ZenESX Resources
+  - action: move_path
+    src: ./tmp/loading_screen
+    dest: ./resources/loading_screen
 
-# Standard ESX Ressourcen
-esx_resources:
-  # Core ESX
-  - 'es_extended'
-  - 'esx_menu_default'
-  - 'esx_menu_dialog'
-  - 'esx_menu_list'
-  - 'oxmysql'
-  - 'ox_lib'
-  
-  # Identity & Multicharacter
-  - 'esx_identity'
-  - 'esx_multicharacter'
-  
-  # Basic Needs
-  - 'esx_basicneeds'
-  - 'esx_status'
-  - 'esx_voice'
-  
-  # Jobs - Emergency Services
-  - 'esx_policejob'
-  - 'esx_ambulancejob'
-  - 'esx_firejob'
-  
-  # Jobs - Legal
-  - 'esx_mechanicjob'
-  - 'esx_taxijob'
-  - 'esx_truckerjob'
-  - 'esx_realestateagentjob'
-  - 'esx_cardealer'
-  
-  # Economy & Banking
-  - 'esx_society'
-  - 'esx_addonaccount'
-  - 'esx_addoninventory'
-  - 'esx_datastore'
-  
-  # Shops & Services
-  - 'esx_shops'
-  - 'esx_clotheshop'
-  - 'esx_barbershop'
-  - 'esx_accessories'
-  - 'esx_vehicleshop'
-  
-  # Inventory
-  - 'ox_inventory'
-  
-  # Communication
-  - 'pma-voice'
-  - 'rp-radio'
-  
-  # Admin & Management
-  - 'esx_admin'
-  - 'txAdmin'
-  
-  # Vehicles
-  - 'esx_garage'
-  - 'esx_lscustoms'
-  - 'esx_vehiclelock'
-  
-  # Weapons & Items
-  - 'esx_weaponshop'
-  - 'esx_license'
-  
-  # Roleplay Features
-  - 'esx_phone'
-  - 'esx_jail'
+  - action: move_path
+    src: ./tmp/zs_banking
+    dest: ./resources/zs_banking
 
-# Konfiguration
-config:
-  database:
-    host: 'localhost'
-    user: 'root'
-    password: ''
-    database: 'zenesx'
-    charset: 'utf8mb4'
-  
-  # Player Starting Values
-  starting_money: 5000
-  starting_bank: 25000
-  starting_job: 'unemployed'
-  starting_position:
-    x: -1037.17
-    y: -2737.88
-    z: 20.17
-  
-  # Framework Settings
-  framework:
-    name: 'ZenESX Framework'
-    version: '1.0.0'
-    debug: false
-    enable_updates: true
-    update_notifications: true
-  
-  # Banking Settings (ZS Banking)
-  banking:
-    transfer_fee: 0.0
-    max_transfer: 10000000
-    crypto_enabled: true
-    atm_enabled: true
-  
-  # Jobs Configuration
-  jobs:
-    - name: 'unemployed'
-      label: 'Unemployed'
-      whitelisted: false
-      salary: 200
-    - name: 'police'
-      label: 'Police'
-      whitelisted: true
-      salary: 100
-    - name: 'ambulance'
-      label: 'EMS'
-      whitelisted: true
-      salary: 80
-    - name: 'mechanic'
-      label: 'Mechanic'
-      whitelisted: true
-      salary: 60
-    - name: 'taxi'
-      label: 'Taxi'
-      whitelisted: false
-      salary: 40
-    - name: 'cardealer'
-      label: 'Car Dealer'
-      whitelisted: true
-      salary: 60
-    - name: 'realestateagent'
-      label: 'Real Estate Agent'
-      whitelisted: true
-      salary: 50
-    - name: 'banker'
-      label: 'Banker'
-      whitelisted: true
-      salary: 70
+  - action: move_path
+    src: ./tmp/zenesx_update_system
+    dest: ./resources/zenesx_update_system
 
-# Installation Schritte
-install:
-  steps:
-    - name: 'Download Framework'
-      description: 'ZenESX Framework von GitHub herunterladen'
-      command: 'git clone https://github.com/zenscripts/zenesx-framework.git'
-    
-    - name: 'Database Setup'
-      description: 'Datenbank-Schema importieren'
-      file: 'zen.sql'
-      type: 'sql'
-    
-    - name: 'Copy Resources'
-      description: 'Alle Ressourcen in den resources Ordner kopieren'
-      source: './resources/'
-      destination: 'resources/'
-    
-    - name: 'Configure Server'
-      description: 'server.cfg anpassen'
-      file: 'server.cfg'
-      type: 'config'
-    
-    - name: 'Start Resources'
-      description: 'Alle Ressourcen in der server.cfg aktivieren'
-      resources: 
-        - 'loading_screen'
-        - 'zs_banking'
-        - '[cayo]/cayo minimap'
-        - '[cayo]/cayo resurces'
-        - '[cayo]/cayo shops'
-        - '[cayo]/cayo tor'
-        - '[cayo]/Cayo_Bridge'
+  - action: move_path
+    src: ./tmp/zenesx_admin_system
+    dest: ./resources/zenesx_admin_system
 
-# Update System
-updates:
-  auto_check: true
-  check_interval: 3600
-  notify_admins: true
-  notify_txadmin: true
-  github_integration: true
-  
-  # Update Commands
-  commands:
-    check: '/zenesx:checkupdate'
-    version: '/zenesx:version'
-    help: '/zenesx:help'
+  - action: move_path
+    src: ./tmp/zenesx_performance_monitor
+    dest: ./resources/zenesx_performance_monitor
 
-# Features Liste
-features:
-  core:
-    - 'ESX Legacy Framework'
-    - 'Automatische GitHub Updates'
-    - 'txAdmin Integration'
-    - 'Custom Loading Screen mit Musik'
-    - 'Performance-optimiert'
-  
-  banking:
-    - 'ZS Banking System'
-    - 'Crypto-Trading (BTC, ETH, ADA)'
-    - 'Überweisungen zwischen Spielern'
-    - 'ATM & Bank Locations'
-    - 'Detaillierte Transaktions-Historie'
-  
-  cayo_perico:
-    - 'Fahrbare Brücke nach Cayo Perico'
-    - 'Shops und Bank auf der Insel'
-    - 'El Rubio Mansion Gate System'
-    - 'Erweiterte Minimap Integration'
-    - 'Performance-optimierte Stream-Dateien'
-  
-  jobs:
-    - '25+ verschiedene Jobs'
-    - 'Vollständiges Polizei-System'
-    - 'EMS & Ambulance Service'
-    - 'Mechaniker & Fahrzeug-Service'
-    - 'Taxi & Transport Services'
-    - 'Immobilien & Car Dealer'
-  
-  economy:
-    - 'Society-System für Unternehmen'
-    - 'Erweiterte Inventar-Integration'
-    - 'Fahrzeug-Management'
-    - 'Immobilien-System'
-    - 'Lizenz-System'
+  - action: move_path
+    src: ./tmp/zenesx_backup_system
+    dest: ./resources/zenesx_backup_system
 
-# Support & Documentation
-support:
-  discord: 'https://discord.gg/zenscripts'
-  github: 'https://github.com/zenscripts/zenesx-framework'
-  website: 'https://zenscripts.de'
-  wiki: 'https://github.com/zenscripts/zenesx-framework/wiki'
-  
-# Lizenz
-license:
-  type: 'Custom'
-  description: 'Erlaubt für eigene Server, Weiterverkauf untersagt'
+  # Cayo Perico Resources
+  - action: move_path
+    src: ./tmp/[cayo]
+    dest: ./resources/[cayo]
 
-  copyright: '© 2024 Zen Scripts'
+  # Server Configuration
+  - action: move_path
+    src: ./tmp/server.cfg
+    dest: ./server.cfg
+
+  # Download ESX Legacy Core
+  - action: download_github
+    src: https://github.com/esx-framework/esx_core
+    ref: main
+    dest: ./resources/[esx]/es_extended
+
+  # Download Dependencies
+  - action: download_github
+    src: https://github.com/overextended/oxmysql
+    ref: main
+    dest: ./resources/oxmysql
+
+  - action: download_github
+    src: https://github.com/overextended/ox_lib
+    ref: main
+    dest: ./resources/ox_lib
+
+  - action: download_github
+    src: https://github.com/overextended/ox_inventory
+    ref: main
+    dest: ./resources/ox_inventory
+
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/pma-voice
+
+  # ESX Jobs
+  - action: download_github
+    src: https://github.com/esx-framework/esx_policejob
+    ref: main
+    dest: ./resources/[esx]/esx_policejob
+
+  - action: download_github
+    src: https://github.com/esx-framework/esx_ambulancejob
+    ref: main
+    dest: ./resources/[esx]/esx_ambulancejob
+
+  - action: download_github
+    src: https://github.com/esx-framework/esx_mechanicjob
+    ref: main
+    dest: ./resources/[esx]/esx_mechanicjob
+
+  # ESX Core Scripts
+  - action: download_github
+    src: https://github.com/esx-framework/esx_society
+    ref: main
+    dest: ./resources/[esx]/esx_society
+
+  - action: download_github
+    src: https://github.com/esx-framework/esx_garage
+    ref: main
+    dest: ./resources/[esx]/esx_garage
+
+  - action: download_github
+    src: https://github.com/esx-framework/esx_shops
+    ref: main
+    dest: ./resources/[esx]/esx_shops
+
+  # Cleanup
+  - action: remove_path
+    path: ./tmp
+
+variables:
+  - name: Database Host
+    description: MySQL Database Host
+    type: text
+    default: localhost
+
+  - name: Database Name
+    description: MySQL Database Name
+    type: text
+    default: zenesx
+
+  - name: Database User
+    description: MySQL Database Username
+    type: text
+    default: root
+
+  - name: Database Password
+    description: MySQL Database Password
+    type: password
+    default: ""
+
+  - name: Server Name
+    description: Your FiveM Server Name
+    type: text
+    default: ZenESX Framework Server
+
+  - name: Admin Steam ID
+    description: Your Steam ID for admin permissions
+    type: text
+    default: steam:110000000000000
+
+replacements:
+  # Database Configuration
+  - file: server.cfg
+    pattern: 'set mysql_connection_string ".*"'
+    value: 'set mysql_connection_string "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"'
+
+  # Server Settings
+  - file: server.cfg
+    pattern: 'sv_hostname ".*"'
+    value: 'sv_hostname "{{Server Name}}"'
+
+  # Admin Permissions
+  - file: server.cfg
+    pattern: 'add_principal identifier.steam:YOUR_STEAM_ID group.admin'
+    value: 'add_principal identifier.{{Admin Steam ID}} group.admin'

@@ -261,9 +261,9 @@ Config.UI = {
 Config.Debug = {
     enabled = true,                   -- Enable debug mode
     features = {
-        showConsoleLogs = true,       -- Show console logs
-        showAutoUpdateLogs = true,    -- Show auto-update logs
-        showBlipLogs = true,          -- Show blip creation logs
+        showConsoleLogs = false,       -- Show console logs
+        showAutoUpdateLogs = false,    -- Show auto-update logs
+        showBlipLogs = false,          -- Show blip creation logs
         showMarkerLogs = false        -- Show marker drawing logs
     }
 }
@@ -334,7 +334,7 @@ Config.AddonIntegration = {
     esx_billing = false,              -- Enable ESX Billing integration
     esx_society = false,              -- Enable ESX Society integration
     esx_jobs = false,                 -- Enable ESX Jobs integration
-    zs_crypto = true                  -- Enable zs_cryptoaddon integration
+    zs_crypto = false                  -- Enable zs_cryptoaddon integration
 }
 
 -- ========================================

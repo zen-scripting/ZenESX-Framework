@@ -120,7 +120,7 @@ ZenESX Framework/
 3. **Search:** "ZenESX Framework" 
 4. **Or use Recipe URL:** 
    ```
-   https://github.com/zenscripts/zenesx-framework/raw/main/recipe.yaml
+   https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
    ```
 5. **Configure:** Database, Admin settings
 6. **Deploy:** Automatic installation
@@ -129,7 +129,7 @@ ZenESX Framework/
 
 ```bash
 # Clone the repository
-git clone https://github.com/zen-scripting/ZenESX-Framework/blob/main/recipe.yaml
+git clone https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
 
 # Copy resources to your FiveM server
 cp -r zenesx_* /path/to/fivem/resources/
@@ -304,5 +304,6 @@ add_ace group.helper zenesx.helper allow
 4. **🎮 Enjoy:** Your enhanced FiveM server experience!
 
 **Happy Role Playing! 🎮✨**
+
 
 

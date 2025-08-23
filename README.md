@@ -35,7 +35,7 @@ git clone https://github.com/zen-scripting/ZenESX-Framework/blob/main/recipe.yam
 
 | Feature | Description / Beschreibung |
 |---------|----------------------------|
-| 🏦 **ZS Banking** | Crypto trading, transfers, modern UI / Crypto-Trading, Überweisungen, moderne UI |
+| 🏦 **ZS Banking** | Transfers, modern UI / Crypto-Trading, Überweisungen, moderne UI |
 | 🎵 **Loading Screen** | Custom screen with music and controls / Custom Screen mit Musik und Steuerung |
 | 👨‍💻 **Admin System** | F5 menu, 5 admin levels, full logging / F5-Menü, 5 Admin-Level, vollständige Protokollierung |
 | 📊 **Performance Monitor** | Real-time stats and alerts / Echtzeit-Statistiken und Warnungen |

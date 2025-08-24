@@ -2,6 +2,10 @@
 
 **Sprachen:** [🇩🇪 Deutsch](README_DE.md) | [🇺🇸 English](README_EN.md)
 
+Das ist der link der in txadmin eingefügt werden muss in Remote URL Template , das man das framework verwenden kann
+
+txadmin framework link:https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
+
 Ein vollständiges, erweiterbares ESX-basiertes Framework für FiveM Server mit modernem Banking-System, Custom Loading Screen und umfangreichen Features.
 
 ## 🌟 Hauptfeatures

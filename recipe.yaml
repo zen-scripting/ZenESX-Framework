@@ -42,6 +42,14 @@ tasks:
     src: ./tmp/[cayo]
     dest: ./resources/[cayo]
 
+    # Import Database
+  - action: connect_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+  
+  - action: query_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+    file: ./zen.sql
+
   - action: move_path
     src: ./tmp/zen.sql
     dest: ./zen.sql
@@ -74,14 +82,6 @@ tasks:
 
   # ESX Core Scripts sind bereits in ESX-Legacy-Addons enthalten
   # Keine separaten Downloads nötig
-
-  # Import Database
-  - action: connect_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-  
-  - action: query_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-    file: ./zen.sql
 
   # Write server.cfg
   - action: write_file

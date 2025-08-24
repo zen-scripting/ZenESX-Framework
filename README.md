@@ -4,6 +4,10 @@
 - 🇩🇪 **[Deutsch](README_DE.md)** - Deutsche Dokumentation
 - 🇺🇸 **[English](README_EN.md)** - English Documentation
 
+This is the link that needs to be inserted into the Remote URL template in txadmin to use the framework.
+
+txadmin framework link: https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
+
 ---
 
 ## Quick Links / Schnellzugriff

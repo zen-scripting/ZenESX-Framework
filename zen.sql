@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `job_grades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =======================================
--- ITEMS SYSTEM
+-- ITEMS SYSTEM (ox_inventory compatible)
 -- =======================================
 CREATE TABLE IF NOT EXISTS `items` (
   `name` varchar(50) NOT NULL,
@@ -71,6 +71,31 @@ CREATE TABLE IF NOT EXISTS `items` (
   `rare` tinyint(4) NOT NULL DEFAULT 0,
   `can_remove` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- =======================================
+-- OX INVENTORY SYSTEM
+-- =======================================
+
+-- ox_inventory tables
+CREATE TABLE IF NOT EXISTS `ox_inventory` (
+  `owner` varchar(60) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `data` longtext DEFAULT NULL,
+  `lastupdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`name`),
+  KEY `owner` (`owner`),
+  KEY `lastupdated` (`lastupdated`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ox_inventory stashes
+CREATE TABLE IF NOT EXISTS `ox_inventory_stashes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `data` longtext DEFAULT NULL,
+  `lastupdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =======================================
@@ -408,5 +433,94 @@ CREATE INDEX IF NOT EXISTS `idx_success_type` ON `banking_crypto_transactions` (
 CREATE INDEX IF NOT EXISTS `idx_currency_date` ON `banking_crypto_transactions` (`crypto_currency`, `transaction_date` DESC);
 CREATE INDEX IF NOT EXISTS `idx_banking_history_identifier_date` ON `banking_history` (`identifier`, `transaction_date` DESC);
 CREATE INDEX IF NOT EXISTS `idx_transfers_date` ON `banking_transfers` (`transfer_date` DESC);
+
+-- =======================================
+-- RAMAZON JOB SYSTEM
+-- =======================================
+
+-- RAMAZON Haupttabelle für Pakete
+CREATE TABLE IF NOT EXISTS `rc_ramazon` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `identifier` varchar(255) NOT NULL,
+    `owner` varchar(255) NOT NULL,
+    `itemLable` varchar(255) NOT NULL,
+    `itemName` varchar(255) NOT NULL,
+    `price` int(255) NOT NULL,
+    `packageDelivered` int(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- RAMAZON Arbeiter Tabelle
+CREATE TABLE IF NOT EXISTS `rc_ramazon_workers` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `identifier` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- RAMAZON Job in das Jobs-System integrieren
+INSERT IGNORE INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
+('ramazon', 'RAMAZON Delivery', 0);
+
+-- RAMAZON Job-Grades
+INSERT IGNORE INTO `job_grades` (`job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
+('ramazon', 0, 'delivery', 'Delivery Driver', 25, '[]', '[]'),
+('ramazon', 1, 'supervisor', 'Supervisor', 35, '[]', '[]'),
+('ramazon', 2, 'manager', 'Manager', 45, '[]', '[]'),
+('ramazon', 3, 'boss', 'Boss', 55, '[]', '[]');
+
+-- RAMAZON Society Account
+INSERT IGNORE INTO `addon_account` (`name`, `label`, `shared`) VALUES
+('society_ramazon', 'RAMAZON', 1);
+
+-- RAMAZON Society Inventory
+INSERT IGNORE INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
+('society_ramazon', 'RAMAZON', 1);
+
+-- RAMAZON Society Datastore
+INSERT IGNORE INTO `datastore` (`name`, `label`, `shared`) VALUES
+('society_ramazon', 'RAMAZON', 1);
+
+-- RAMAZON Society Data
+INSERT IGNORE INTO `society` (`name`, `label`, `account`, `money`) VALUES
+('ramazon', 'RAMAZON', 'society_ramazon', 25000);
+
+-- =======================================
+-- CONSTRUCTION WORKER JOB SYSTEM
+-- =======================================
+
+-- Construction Worker Job
+INSERT IGNORE INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
+('budowa', 'Construction Worker', 0);
+
+-- Construction Worker Job-Grades
+INSERT IGNORE INTO `job_grades` (`job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
+('budowa', 0, 'Budowlaniec', 'Worker', 30, '[]', '[]'),
+('budowa', 1, 'Brygadzista', 'Foreman', 40, '[]', '[]'),
+('budowa', 2, 'Kierownik', 'Manager', 50, '[]', '[]'),
+('budowa', 3, 'Szef', 'Boss', 60, '[]', '[]');
+
+-- Construction Worker Items
+INSERT IGNORE INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
+('contrat', 'Construction Report', 1, 0, 1),
+('cement', 'Cement', 2, 0, 1),
+('bricks', 'Bricks', 1, 0, 1),
+('steel', 'Steel', 3, 0, 1),
+('wood', 'Wood', 1, 0, 1);
+
+-- Construction Worker Society Account
+INSERT IGNORE INTO `addon_account` (`name`, `label`, `shared`) VALUES
+('society_budowa', 'Construction Company', 1);
+
+-- Construction Worker Society Inventory
+INSERT IGNORE INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
+('society_budowa', 'Construction Company', 1);
+
+-- Construction Worker Society Datastore
+INSERT IGNORE INTO `datastore` (`name`, `label`, `shared`) VALUES
+('society_budowa', 'Construction Company', 1);
+
+-- Construction Worker Society Data
+INSERT IGNORE INTO `society` (`name`, `label`, `account`, `money`) VALUES
+('budowa', 'Construction Company', 'society_budowa', 30000);
 
 COMMIT;

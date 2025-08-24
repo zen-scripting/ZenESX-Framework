@@ -7,10 +7,14 @@ author: Zen Scripts
 description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration und Loading Screen
 
 tasks:
-  # Download ZenESX Framework
+  # Download ZenESX Framework (ZIP Download als Alternative)
   - action: download_github
-    src: https://github.com/zen-scripting/ZenESX-Framework
-    ref: master
+    src: https://github.com/zen-scripting/ZenESX-Framework/archive/refs/heads/main.zip
+    dest: ./tmp.zip
+
+  # Extract ZIP file
+  - action: extract_zip
+    src: ./tmp.zip
     dest: ./tmp
 
   # Move ZenESX Resources

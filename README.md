@@ -26,7 +26,8 @@ txadmin framework link: https://raw.githubusercontent.com/zen-scripting/ZenESX-F
 3. Search: "ZenESX Framework" 
 4. Or use Recipe URL / Oder Recipe-URL verwenden:
    ```
-  https://github.com/zen-scripting/ZenESX-Framework/tree/main
+  [https://github.com/zen-scripting/ZenESX-Framework/tree/main](https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml)
+  
    ```
 
 #### **Manual Installation / Manuelle Installation:**

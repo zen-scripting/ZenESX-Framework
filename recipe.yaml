@@ -52,7 +52,7 @@ tasks:
   # Download ESX Core (from esx-framework organization)
   - action: download_github
     src: https://github.com/esx-framework/esx_core
-    ref: master
+    ref: main
     dest: ./resources/[esx]/esx_core
 
   # Download Dependencies
@@ -76,21 +76,11 @@ tasks:
     ref: master
     dest: ./resources/pma-voice
 
-  # Download ESX Jobs (only working ones)
+  # Download ESX Legacy Addons (alle Jobs in einem Paket)
   - action: download_github
-    src: https://github.com/esx-framework/esx_policejob
-    ref: master
-    dest: ./resources/[esx]/esx_policejob
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_ambulancejob
-    ref: master
-    dest: ./resources/[esx]/esx_ambulancejob
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_mechanicjob
-    ref: master
-    dest: ./resources/[esx]/esx_mechanicjob
+    src: https://github.com/esx-framework/ESX-Legacy-Addons
+    ref: main
+    dest: ./resources/[esx_addons]
 
   # Download ESX Core Scripts (only working ones)
   - action: download_github

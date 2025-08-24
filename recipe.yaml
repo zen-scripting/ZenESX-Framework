@@ -48,9 +48,6 @@ tasks:
     src: ./tmp/zen.sql
     dest: ./zen.sql
 
-  - action: remove_path
-    path: ./tmp
-
   # Download ESX Core (nur der Link, keine Dateien)
   # Die Core wird über den Link geladen: https://github.com/esx-framework/esx_core/tree/main/%5Bcore%5D
 
@@ -114,6 +111,8 @@ tasks:
     path: ./resources/[esx_addons]/esx_voice
   - action: remove_path
     path: ./resources/[esx_addons]/esx_phone
+  - action: remove_path
+    path: ./tmp
 
   # Download ESX Legacy Addons (nur der Link, keine Dateien)
   # Die Addons werden über den Link geladen: https://github.com/esx-framework/ESX-Legacy-Addons/tree/main/%5Besx_addons%5D

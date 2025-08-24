@@ -72,9 +72,9 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]
 
-  # Import Database
-  - action: query_database
-    file: ./zen.sql
+  # Database wird manuell importiert
+  # Die zen.sql Datei wurde in den Server-Ordner verschoben
+  # Importiere sie manuell in deine MySQL-Datenbank nach der Installation
 
   # Write server.cfg
   - action: write_file

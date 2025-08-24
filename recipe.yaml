@@ -72,13 +72,13 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]
 
-  # Import Database (nach allen Downloads)
+  # Import Database
   - action: connect_database
     connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
   
   - action: query_database
     connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-    file: zen.sql
+    file: "{{Server Path}}/zen.sql"
 
   # Write server.cfg
   - action: write_file

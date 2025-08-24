@@ -10,11 +10,6 @@ tasks:
   # Download ZenESX Framework (ZIP Download als Alternative)
   - action: download_github
     src: https://github.com/zen-scripting/ZenESX-Framework/archive/refs/heads/main.zip
-    dest: ./tmp.zip
-
-  # Extract ZIP file
-  - action: extract_zip
-    src: ./tmp.zip
     dest: ./tmp
 
   # Move ZenESX Resources

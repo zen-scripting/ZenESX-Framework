@@ -42,20 +42,20 @@ tasks:
     src: ./tmp/[cayo]
     dest: ./resources/[cayo]
 
-    # Import Database
-  - action: connect_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-  
-  - action: query_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-    file: ./zen.sql
-
   - action: move_path
     src: ./tmp/zen.sql
     dest: ./zen.sql
 
   - action: remove_path
     path: ./tmp
+
+  # Import Database (nach dem Verschieben der Dateien)
+  - action: connect_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+  
+  - action: query_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+    file: ./zen.sql
 
   # Download ESX Core
   - action: download_github

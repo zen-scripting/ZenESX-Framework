@@ -80,17 +80,17 @@ tasks:
   # Download ESX Core Scripts
   - action: download_github
     src: https://github.com/esx-framework/esx_society
-    ref: master
+    ref: main
     dest: ./resources/[esx]/esx_society
 
   - action: download_github
     src: https://github.com/esx-framework/esx_garage
-    ref: master
+    ref: main
     dest: ./resources/[esx]/esx_garage
 
   - action: download_github
     src: https://github.com/esx-framework/esx_shops
-    ref: master
+    ref: main
     dest: ./resources/[esx]/esx_shops
 
   # Import Database

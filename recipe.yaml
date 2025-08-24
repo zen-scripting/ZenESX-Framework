@@ -80,6 +80,7 @@ tasks:
     connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
   
   - action: query_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
     file: ./zen.sql
 
   # Write server.cfg

@@ -80,11 +80,7 @@ tasks:
     ref: 776ac8f3898182e5c075d533bbd89e92efa017e9
     dest: ./resources/[zenesx]/EasyAdmin
 
-  # Download MDT (Mobile Data Terminal)
-  - action: download_github
-    src: https://github.com/thelindat/mdt
-    ref: 0c804de3cd497d70d8ae76bf1699d76d4c9d94fc
-    dest: ./resources/mdt
+
 
   # Download zusätzliche ZENESX Ressourcen
   - action: download_github

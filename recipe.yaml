@@ -86,6 +86,44 @@ tasks:
     ref: 0c804de3cd497d70d8ae76bf1699d76d4c9d94fc
     dest: ./resources/mdt
 
+  # Download zusätzliche ZENESX Ressourcen
+  - action: download_github
+    src: https://github.com/nearest-postal/nearest-postal
+    ref: main
+    dest: ./resources/[zenesx]/nearest-postal
+
+  - action: download_github
+    src: https://github.com/andristum/dpclothing
+    ref: master
+    dest: ./resources/[zenesx]/dpclothing
+
+
+
+  - action: download_github
+    src: https://github.com/andristum/VoiceRange
+    ref: master
+    dest: ./resources/[zenesx]/VoiceRange
+
+  - action: download_github
+    src: https://github.com/andristum/CarryPeople
+    ref: master
+    dest: ./resources/[zenesx]/CarryPeople
+
+  - action: download_github
+    src: https://github.com/jonassvensson4/jsfour-idcard
+    ref: master
+    dest: ./resources/[zenesx]/jsfour-idcard
+
+  - action: download_github
+    src: https://github.com/krzysu/krz_personalmenu
+    ref: master
+    dest: ./resources/[zenesx]/krz_personalmenu
+
+  - action: download_github
+    src: https://github.com/andristum/postalmap
+    ref: master
+    dest: ./resources/[zenesx]/postalmap
+
   ## Cleanup
   - action: remove_path
     path: ./resources/esx_example

@@ -49,14 +49,6 @@ tasks:
   - action: remove_path
     path: ./tmp
 
-  # Import Database (nach dem Verschieben der Dateien)
-  - action: connect_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-  
-  - action: query_database
-    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
-    file: ./zen.sql
-
   # Download ESX Core
   - action: download_github
     src: https://github.com/esx-framework/esx_core
@@ -80,8 +72,13 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]
 
-  # ESX Core Scripts sind bereits in ESX-Legacy-Addons enthalten
-  # Keine separaten Downloads nötig
+  # Import Database (nach allen Downloads)
+  - action: connect_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+  
+  - action: query_database
+    connection_string: "mysql://{{Database User}}:{{Database Password}}@{{Database Host}}/{{Database Name}}?charset=utf8mb4"
+    file: zen.sql
 
   # Write server.cfg
   - action: write_file
@@ -99,7 +96,7 @@ tasks:
       ensure zenesx_performance_monitor
       ensure zenesx_backup_system
       ensure "[cayo]/cayo minimap"
-      ensure "[cayo]/cayo resurces"
+      ensure "[cayo]/cayo resources"
       ensure "[cayo]/cayo shops"
       ensure "[cayo]/cayo tor"
       ensure "[cayo]/Cayo_Bridge"

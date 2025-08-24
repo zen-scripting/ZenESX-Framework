@@ -2,7 +2,7 @@ $engine: 3
 $minFxVersion: 2545
 $onesync: on
 name: ZenESX Framework
-version: 1.0.0
+version: 1.1.1.1
 author: Zen Scripts
 description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integration und Loading Screen
 
@@ -13,34 +13,36 @@ tasks:
     ref: main
     dest: ./tmp
 
-  # Move ZenESX Resources
+  # Move ZenESX Resources (in [zenesx] Ordner)
   - action: move_path
     src: ./tmp/loading_screen
-    dest: ./resources/loading_screen
+    dest: ./resources/[zenesx]/loading_screen
 
   - action: move_path
     src: ./tmp/zs_banking
-    dest: ./resources/zs_banking
+    dest: ./resources/[zenesx]/zs_banking
 
   - action: move_path
     src: ./tmp/zenesx_update_system
-    dest: ./resources/zenesx_update_system
+    dest: ./resources/[zenesx]/zenesx_update_system
 
-  - action: move_path
-    src: ./tmp/zenesx_admin_system
-    dest: ./resources/zenesx_admin_system
+  # ZENESX Admin System entfernt - verwenden EasyAdmin
 
   - action: move_path
     src: ./tmp/zenesx_performance_monitor
-    dest: ./resources/zenesx_performance_monitor
+    dest: ./resources/[zenesx]/zenesx_performance_monitor
 
   - action: move_path
     src: ./tmp/zenesx_backup_system
-    dest: ./resources/zenesx_backup_system
+    dest: ./resources/[zenesx]/zenesx_backup_system
 
   - action: move_path
     src: ./tmp/[cayo]
     dest: ./resources/[cayo]
+
+  - action: move_path
+    src: ./tmp/logo
+    dest: ./logo
 
   - action: move_path
     src: ./tmp/zen.sql
@@ -49,11 +51,8 @@ tasks:
   - action: remove_path
     path: ./tmp
 
-  # Download ESX Core (komplette Dateien)
-  - action: download_github
-    src: https://github.com/esx-framework/esx_core
-    ref: main
-    dest: ./resources/[esx]
+  # Download ESX Core (nur der Link, keine Dateien)
+  # Die Core wird über den Link geladen: https://github.com/esx-framework/esx_core/tree/main/%5Bcore%5D
 
   # Download Dependencies
   - action: download_file
@@ -66,147 +65,60 @@ tasks:
 
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
-    ref: master
+    ref: 4754a4dfff1e897f14df6d7d0e06c7fbfbaa20d5
     dest: ./resources/pma-voice
 
-  # Download ESX Legacy Addons (komplette Dateien)
+  # Download default CFX resources
   - action: download_github
-    src: https://github.com/esx-framework/ESX-Legacy-Addons
-    ref: main
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources/[cfx-default]
+
+  # Server.cfg von ZENESX
+  - action: move_path
+    src: ./tmp/server.cfg
+    dest: ./server.cfg
+
+  # Datenbank importieren
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/zen.sql
+
+  # Download basic resources and ESX dependencies
+  - action: download_github
+    src: https://github.com/esx-framework/esx-legacy
+    ref: 8153f6a9221baeef0affb0176e5811007b8f5e3b
     dest: ./resources/[esx_addons]
 
-  # Write server.cfg (ESX Core + ZENESX Features)
-  - action: write_file
-    file: ./server.cfg
-    data: |
-      # Editable Settings
-      # -----------------
-      # You can edit the following:
-      
-      {{serverEndpoints}}
-      
-      # Set Tags
-      sets tags "default, esx, esx legacy, official, roleplay, zenesx"
-      
-      # Optional Editable Settings
-      # --------------------------
-      # You may edit the following:
-      
-      sv_licenseKey "{{svLicense}}"
-      sv_hostname "{{serverName}} | ZENESX Framework Server"
-      sets sv_projectName " {{serverName}} | [ZENESX Framework]"
-      sets sv_projectDesc "{{recipeDescription}}"
-      set mysql_connection_string "{{dbConnectionString}}"
-      load_server_icon zenesxLogo.png
-      sv_maxclients {{maxClients}}
-      sets locale "root-AQ" 
-      sv_enforceGameBuild 3258
-      set resources_useSystemChat true
-      
-      # System Administrators
-      # ---------------------
-      # Add system admins
-      
-      add_principal group.admin group.user
-      add_ace group.admin command allow # allow all commands
-      add_ace group.admin command.quit deny # but don't allow quit
-      add_ace resource.es_extended command.add_ace allow
-      add_ace resource.es_extended command.add_principal allow
-      add_ace resource.es_extended command.remove_principal allow
-      add_ace resource.es_extended command.stop allow
-      {{addPrincipalsMaster}}
-      
-      # pma-voice Config
-      # ----------------
-      setr voice_enableRadioAnim 1
-      setr voice_useNativeAudio true
-      setr voice_useSendingRangeOnly true
-      
-      # security-convars
-      # ----------------
-      sv_enableNetworkedSounds false
-      sv_enableNetworkedScriptEntityStates false
-      sv_enableNetworkedPhoneExplosions false
-      sv_filterRequestControl 2
-      
-      # ESX Language (edit to change the language of ESX)
-      # -----------------------------------------------------------
-      ## Uncomment to set your own locale,
-      ## if not, it will use the language you have selected in txAdmin.
-      #setr esx:locale "en"
-      
-      ## Uncomment to owerride the identifier used by ESX.
-      ## By default, it uses the language you have selected in txAdmin.
-      #setr esx:identifier "license"
-      
-      # Default & Standalone Resources
-      # ------------------------------
-      ensure chat
-      ensure hardcap
-      ensure oxmysql
-      
-      # ESX Legacy Core
-      # ----------
-      ensure [core]
-      
-      # ESX Addons
-      # ----------
-      ensure [standalone]
-      ensure [esx_addons]
-      
-      # ========================================
-      # ZENESX FRAMEWORK FEATURES
-      # ========================================
-      
-      # ZENESX Loading Screen
-      ensure loading_screen
-      
-      # ZENESX Banking System
-      ensure zs_banking
-      
-      # ZENESX Admin System
-      ensure zenesx_admin_system
-      
-      # ZENESX Backup System
-      ensure zenesx_backup_system
-      
-      # ZENESX Performance Monitor
-      ensure zenesx_performance_monitor
-      
-      # ZENESX Update System
-      ensure zenesx_update_system
-      
-      # ========================================
-      # ZENESX JOBS SYSTEM
-      # ========================================
-      
-      # RAMAZON Delivery Job
-      ensure [jobs]/ramazon_job/rc_ramazon
-      ensure [jobs]/ramazon_job/rc_ramazonDelivery
-      ensure [jobs]/ramazon_job/rprogress
-      ensure [jobs]/ramazon_job/pNotify
-      
-      # Construction Worker Job
-      ensure [jobs]/construction_worker
-      
-      # ========================================
-      # ZENESX PHONE SYSTEM
-      # ========================================
-      
-      # GCPhone - Advanced Smartphone System
-      ensure [phone]/gcphone
-      ensure [phone]/esx_addons_gcphone
-      
-      # ========================================
-      # ZENESX CAYO PERICO MODS
-      # ========================================
-      
-      # Cayo Perico Resources
-      ensure [cayo]/cayo_minimap
-      ensure [cayo]/cayo_resources
-      ensure [cayo]/cayo_shops
-      ensure [cayo]/cayo_gate
-      ensure [cayo]/cayo_bridge
+  # Download EasyAdmin (Admin System) in [zenesx] Ordner
+  - action: download_github
+    src: https://github.com/Blumlaut/EasyAdmin
+    ref: 776ac8f3898182e5c075d533bbd89e92efa017e9
+    dest: ./resources/[zenesx]/EasyAdmin
+
+  # Download MDT (Mobile Data Terminal)
+  - action: download_github
+    src: https://github.com/thelindat/mdt
+    ref: 0c804de3cd497d70d8ae76bf1699d76d4c9d94fc
+    dest: ./resources/mdt
+
+  ## Cleanup
+  - action: remove_path
+    path: ./resources/esx_example
+  - action: remove_path
+    path: ./resources/server.cfg
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_whitelist
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_voice
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_phone
+
+  # Download ESX Legacy Addons (nur der Link, keine Dateien)
+  # Die Addons werden über den Link geladen: https://github.com/esx-framework/ESX-Legacy-Addons/tree/main/%5Besx_addons%5D
+
+  # Server.cfg wird manuell konfiguriert
 
 variables:
   - name: Database Host

@@ -1,5 +1,29 @@
 # ZenESX Framework - Changelog
 
+## Version 1.1.1.1 - Major Update & EasyAdmin Integration
+
+### 🎉 **Major Features Added**
+
+#### **🔄 EasyAdmin Integration**
+- **EasyAdmin System** - Professional admin panel integration
+- **Replaced ZENESX Admin** - Modern admin interface
+- **Enhanced Permissions** - Advanced permission management
+- **Better UI/UX** - Professional admin experience
+
+#### **📁 Improved Resource Organization**
+- **ZENESX Main Folder** - All ZENESX resources in `[zenesx]` folder
+- **Better Structure** - Cleaner organization and maintainability
+- **Separate Cayo Perico** - Cayo Perico mods in dedicated `[cayo]` folder
+- **Logo in Root** - Server logo accessible from main directory
+
+#### **🔧 Enhanced Recipe System**
+- **Updated recipe.yaml** - Improved txAdmin deployment
+- **Better Resource Loading** - Optimized loading sequence
+- **Cleaner Structure** - Removed duplicate actions
+- **Professional Setup** - Production-ready deployment
+
+---
+
 ## Version 1.0.0 - Initial Release
 
 ### 🎉 **Major Features Added**
@@ -149,7 +173,7 @@ add_ace group.helper zenesx.helper allow
 - **Backup Notifications** - Backup success/failure status
 - **Update Notifications** - New version announcements
 
-### 📁 **Final Structure**
+### 📁 **Final Structure (v1.1.1.1)**
 
 ```
 ZenESX Framework/
@@ -159,27 +183,32 @@ ZenESX Framework/
 ├── 📄 README.md                   # English documentation
 ├── 📄 INSTALLATION.md             # Installation guide
 ├── 📄 CHANGELOG.md                # This file
-├── 🎵 loading_screen/             # Custom loading screen (separate resource)
-├── 🏦 zs_banking/                 # Banking system (separate resource)
-├── 🔄 zenesx_update_system/       # GitHub updates (separate resource)
-├── 👨‍💻 zenesx_admin_system/        # Admin system (separate resource)
-├── 📊 zenesx_performance_monitor/ # Performance monitoring (separate resource)
-├── 💾 zenesx_backup_system/       # Backup system (separate resource)
-└── 🏝️ [cayo]/                    # Cayo Perico mods (separate resources)
+├── 🖼️ logo/                       # Server logo (root directory)
+├── 🎵 [zenesx]/loading_screen/    # Custom loading screen
+├── 🏦 [zenesx]/zs_banking/        # Banking system
+├── 🔄 [zenesx]/zenesx_update_system/ # GitHub updates
+├── 📊 [zenesx]/zenesx_performance_monitor/ # Performance monitoring
+├── 💾 [zenesx]/zenesx_backup_system/ # Backup system
+├── 👨‍💻 [zenesx]/EasyAdmin/        # Professional admin system
+├── 🏝️ [cayo]/                    # Cayo Perico mods (separate resources)
+├── 📱 mdt/                        # Mobile Data Terminal
+├── 🎵 pma-voice/                  # Voice system
+└── 🗄️ oxmysql/                    # Database system
 ```
 
-### 🚀 **Installation Ready**
+### 🚀 **Installation Ready (v1.1.1.1)**
 
 The ZenESX Framework is now completely ready for deployment with:
-- ✅ **Modular Architecture** - Each system as separate resource
+- ✅ **EasyAdmin Integration** - Professional admin panel
+- ✅ **Improved Organization** - Better resource structure
 - ✅ **GitHub Integration** - Automatic update notifications
-- ✅ **Complete Admin System** - Full admin management
 - ✅ **Performance Monitoring** - Real-time server monitoring
 - ✅ **Automatic Backups** - Database backup automation
 - ✅ **Premium Banking** - ZS Banking integration
 - ✅ **Cayo Perico Integration** - Complete island experience
 - ✅ **Custom Loading Screen** - With music and controls
 - ✅ **Professional Documentation** - Complete setup guides
+- ✅ **Enhanced Recipe** - Production-ready deployment
 
 ### 🎯 **Next Steps**
 
@@ -193,3 +222,4 @@ The ZenESX Framework is now completely ready for deployment with:
 ---
 
 **The ZenESX Framework is ready for production use! 🎉**
+

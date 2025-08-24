@@ -9,8 +9,8 @@ description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integratio
 tasks:
   # Download ZenESX Framework
   - action: download_github
-    src: https://github.com/zen-scripting/ZenESX-Framework.git
-    ref: main
+    src: https://github.com/zen-scripting/ZenESX-Framework
+    ref: master
     dest: ./tmp
 
   # Move ZenESX Resources

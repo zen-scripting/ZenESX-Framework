@@ -13,36 +13,22 @@ tasks:
     ref: main
     dest: ./tmp
 
-  # Move ZenESX Resources (in [zenesx] Ordner)
+  # Move ZenESX Resources (bereits im Repository organisiert)
   - action: move_path
-    src: ./tmp/loading_screen
-    dest: ./resources/[zenesx]/loading_screen
-
-  - action: move_path
-    src: ./tmp/zs_banking
-    dest: ./resources/[zenesx]/zs_banking
-
-  - action: move_path
-    src: ./tmp/zenesx_update_system
-    dest: ./resources/[zenesx]/zenesx_update_system
-
-  # ZENESX Admin System entfernt - verwenden EasyAdmin
-
-  - action: move_path
-    src: ./tmp/zenesx_performance_monitor
-    dest: ./resources/[zenesx]/zenesx_performance_monitor
-
-  - action: move_path
-    src: ./tmp/zenesx_backup_system
-    dest: ./resources/[zenesx]/zenesx_backup_system
+    src: ./tmp/[zenesx]
+    dest: ./resources/[zenesx]
 
   - action: move_path
     src: ./tmp/[cayo]
     dest: ./resources/[cayo]
 
   - action: move_path
-    src: ./tmp/logo
-    dest: ./logo
+    src: ./tmp/[phone]
+    dest: ./resources/[phone]
+
+  - action: move_path
+    src: ./tmp/zenesxLogo.png
+    dest: ./zenesxLogo.png
 
   - action: move_path
     src: ./tmp/zen.sql

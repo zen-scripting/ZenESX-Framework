@@ -9,7 +9,7 @@ description: Vollständiges ESX Framework mit ZS Banking, Cayo Perico Integratio
 tasks:
   # Download ZenESX Framework
   - action: download_github
-    src: https://github.com/zen-scripting/ZenESX-Framework
+    src: https://github.com/zen-scripting/ZenESX-Framework.git
     ref: main
     dest: ./tmp
 
@@ -51,50 +51,47 @@ tasks:
 
   # Download ESX Core (from esx-framework organization)
   - action: download_github
-    src: https://github.com/esx-framework/esx_core
+    src: https://github.com/esx-framework/esx_core.git
     ref: main
     dest: ./resources/[esx]/esx_core
 
   # Download Dependencies
   - action: download_github
-    src: https://github.com/overextended/oxmysql
+    src: https://github.com/overextended/oxmysql.git
     ref: main
     dest: ./resources/oxmysql
 
   - action: download_github
-    src: https://github.com/overextended/ox_lib
+    src: https://github.com/overextended/ox_lib.git
     ref: master
     dest: ./resources/ox_lib
 
-  - action: download_github
-    src: https://github.com/overextended/ox_inventory
-    ref: master
-    dest: ./resources/ox_inventory
+
 
   - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
+    src: https://github.com/AvarianKnight/pma-voice.git
     ref: master
     dest: ./resources/pma-voice
 
   # Download ESX Legacy Addons (alle Jobs in einem Paket)
   - action: download_github
-    src: https://github.com/esx-framework/ESX-Legacy-Addons
+    src: https://github.com/esx-framework/ESX-Legacy-Addons.git
     ref: main
     dest: ./resources/[esx_addons]
 
   # Download ESX Core Scripts (only working ones)
   - action: download_github
-    src: https://github.com/esx-framework/esx_society
+    src: https://github.com/esx-framework/esx_society.git
     ref: master
     dest: ./resources/[esx]/esx_society
 
   - action: download_github
-    src: https://github.com/esx-framework/esx_garage
+    src: https://github.com/esx-framework/esx_garage.git
     ref: master
     dest: ./resources/[esx]/esx_garage
 
   - action: download_github
-    src: https://github.com/esx-framework/esx_shops
+    src: https://github.com/esx-framework/esx_shops.git
     ref: master
     dest: ./resources/[esx]/esx_shops
 

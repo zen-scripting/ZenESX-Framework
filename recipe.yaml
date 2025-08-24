@@ -74,7 +74,7 @@ tasks:
 
   # Import Database
   - action: query_database
-    file: zen.sql
+    file: ./zen.sql
 
   # Write server.cfg
   - action: write_file

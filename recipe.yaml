@@ -34,29 +34,8 @@ tasks:
     src: ./tmp/zen.sql
     dest: ./zen.sql
 
-  # Download ESX Core (nur der Link, keine Dateien)
-  # Die Core wird über den Link geladen: https://github.com/esx-framework/esx_core/tree/main/%5Bcore%5D
-
-  # Download Dependencies
-  - action: download_file
-    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
-    path: ./tmp/files/oxmysql.zip
-  
-  - action: unzip
-    src: ./tmp/files/oxmysql.zip
-    dest: ./resources/oxmysql
-
-  - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
-    ref: 4754a4dfff1e897f14df6d7d0e06c7fbfbaa20d5
-    dest: ./resources/pma-voice
-
-  # Download default CFX resources
-  - action: download_github
-    src: https://github.com/citizenfx/cfx-server-data
-    ref: master
-    subpath: resources
-    dest: ./resources/[cfx-default]
+  # Alle Ressourcen werden bereits aus dem ZenESX Repository geladen
+  # und sind im [zenesx] Ordner enthalten
 
   # Server.cfg von ZENESX
   - action: move_path
@@ -68,42 +47,13 @@ tasks:
   - action: query_database
     file: ./zen.sql
 
-  # Download basic resources and ESX dependencies
-  - action: download_github
-    src: https://github.com/esx-framework/esx-legacy
-    ref: 8153f6a9221baeef0affb0176e5811007b8f5e3b
-    dest: ./resources/[esx_addons]
-
-  # Download EasyAdmin (Admin System) in [zenesx] Ordner
-  - action: download_github
-    src: https://github.com/Blumlaut/EasyAdmin
-    ref: 776ac8f3898182e5c075d533bbd89e92efa017e9
-    dest: ./resources/[zenesx]/EasyAdmin
-
-
-
-  # Download zusätzliche ZENESX Ressourcen
-  # Alle Ressourcen werden bereits aus dem ZenESX Repository geladen
-  # und sind im [zenesx] Ordner enthalten
-
   ## Cleanup
   - action: remove_path
     path: ./resources/esx_example
   - action: remove_path
     path: ./resources/server.cfg
   - action: remove_path
-    path: ./resources/[esx_addons]/esx_whitelist
-  - action: remove_path
-    path: ./resources/[esx_addons]/esx_voice
-  - action: remove_path
-    path: ./resources/[esx_addons]/esx_phone
-  - action: remove_path
     path: ./tmp
-
-  # Download ESX Legacy Addons (nur der Link, keine Dateien)
-  # Die Addons werden über den Link geladen: https://github.com/esx-framework/ESX-Legacy-Addons/tree/main/%5Besx_addons%5D
-
-  # Server.cfg wird manuell konfiguriert
 
 variables:
   - name: Database Host

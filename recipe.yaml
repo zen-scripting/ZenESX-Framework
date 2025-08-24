@@ -56,9 +56,12 @@ tasks:
     dest: ./resources/[esx]/esx_core
 
   # Download Dependencies
-  - action: download_github
-    src: https://github.com/overextended/oxmysql
-    ref: main
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    path: ./tmp/files/oxmysql.zip
+  
+  - action: unzip
+    src: ./tmp/files/oxmysql.zip
     dest: ./resources/oxmysql
 
   - action: download_github
@@ -71,10 +74,6 @@ tasks:
     src: https://github.com/esx-framework/ESX-Legacy-Addons
     ref: main
     dest: ./resources/[esx_addons]
-
-  # Database wird manuell importiert
-  # Die zen.sql Datei wurde in den Server-Ordner verschoben
-  # Importiere sie manuell in deine MySQL-Datenbank nach der Installation
 
   # Write server.cfg
   - action: write_file

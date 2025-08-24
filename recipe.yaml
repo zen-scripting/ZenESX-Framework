@@ -62,11 +62,6 @@ tasks:
     dest: ./resources/oxmysql
 
   - action: download_github
-    src: https://github.com/overextended/ox_lib
-    ref: master
-    dest: ./resources/ox_lib
-
-  - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     ref: master
     dest: ./resources/pma-voice
@@ -77,21 +72,8 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]
 
-  # Download ESX Core Scripts
-  - action: download_github
-    src: https://github.com/esx-framework/esx_society
-    ref: main
-    dest: ./resources/[esx]/esx_society
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_garage
-    ref: main
-    dest: ./resources/[esx]/esx_garage
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_shops
-    ref: main
-    dest: ./resources/[esx]/esx_shops
+  # ESX Core Scripts sind bereits in ESX-Legacy-Addons enthalten
+  # Keine separaten Downloads nötig
 
   # Import Database
   - action: query_database
@@ -119,15 +101,8 @@ tasks:
       ensure "[cayo]/Cayo_Bridge"
       ensure esx_core
       ensure oxmysql
-      ensure ox_lib
-      ensure ox_inventory
       ensure pma-voice
-      ensure esx_policejob
-      ensure esx_ambulancejob
-      ensure esx_mechanicjob
-      ensure esx_society
-      ensure esx_garage
-      ensure esx_shops
+      ensure "[esx_addons]"
       add_principal identifier.{{Admin Steam ID}} group.admin
       add_ace group.admin command allow
       add_ace group.admin command.quit deny

@@ -3,103 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenESX Framework - Loading</title>
+    <title>ZenESX Framework - Loading Screen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="loading-container">
-        <div class="background-overlay"></div>
+    <!-- Hintergrund Bild -->
+    <div class="background-image"></div>
+    
+    <!-- Overlay für bessere Lesbarkeit -->
+    <div class="background-overlay"></div>
+    
+    <!-- Audio Controls - Verbesserte Version -->
+    <div class="audio-controls">
+        <h4>🎵 Audio</h4>
         
-        <!-- Audio Element für Hintergrundmusik -->
-        <audio id="backgroundMusic" loop>
-            <source src="music/musik.mp3" type="audio/mpeg">
-            Dein Browser unterstützt das Audio-Element nicht.
-        </audio>
+        <!-- Play/Pause Button -->
+        <button id="playButton" class="play-button">⏸️</button>
         
-        <!-- Audio Control Button -->
-        <div class="audio-controls">
-            <button id="muteButton" class="audio-btn">🔊</button>
-            <div class="volume-control">
-                <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
-            </div>
-        </div>
+        <!-- Mute/Unmute Button -->
+        <button id="muteButton" class="mute-button">🔊</button>
         
-        <div class="logo-container">
-            <h1 class="logo-text">ZenESX</h1>
-            <h2 class="subtitle">Framework</h2>
-            <p class="framework-description">
-                Erlebe das ultimative Roleplay-Erlebnis mit unserem erweiterten ESX Framework. 
-                Vollgepackt mit Features, Jobs und endlosen Möglichkeiten für dein perfektes RP-Abenteuer.
-            </p>
-        </div>
-        
-        <div class="loading-section">
-            <div class="loading-bar-container">
-                <div class="loading-bar">
-                    <div class="loading-progress" id="loadingProgress"></div>
-                </div>
-                <div class="loading-percentage" id="loadingPercentage">0%</div>
-            </div>
-            
-            <div class="status-container">
-                <div class="status-item" id="status1">
-                    <span class="status-icon">⚡</span>
-                    <span class="status-text">Framework wird initialisiert...</span>
-                </div>
-                <div class="status-item" id="status2">
-                    <span class="status-icon">🌐</span>
-                    <span class="status-text">Verbindung zum Server...</span>
-                </div>
-                <div class="status-item" id="status3">
-                    <span class="status-icon">📦</span>
-                    <span class="status-text">Erweiterte Scripts werden geladen...</span>
-                </div>
-                <div class="status-item" id="status4">
-                    <span class="status-icon">👤</span>
-                    <span class="status-text">Spielerdaten werden geladen...</span>
-                </div>
-                <div class="status-item" id="status5">
-                    <span class="status-icon">💼</span>
-                    <span class="status-text">Jobs & Fraktionen werden synchronisiert...</span>
-                </div>
-                <div class="status-item" id="status6">
-                    <span class="status-icon">✅</span>
-                    <span class="status-text">Bereit zum Spielen!</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <div class="server-info">
-                <h3>🎵 Aktuelle Musik</h3>
-                <p><strong>Track:</strong> Chill Gaming Vibes</p>
-                <p><strong>Künstler:</strong> LoFi Gaming Beats</p>
-                <p class="music-description">Entspannende Hintergrundmusik für dein Gaming-Erlebnis</p>
-            </div>
-            
-            <div class="framework-features">
-                <h3>✨ Framework Features</h3>
-                <ul>
-                    <li>🚗 50+ Fahrzeugmodelle</li>
-                    <li>💼 25+ einzigartige Jobs</li>
-                    <li>🏠 Immobiliensystem</li>
-                    <li>📱 Smartphone Integration</li>
-                    <li>🏪 Erweiterte Shops</li>
-                    <li>⚖️ Justiz & Polizei System</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Tipp</h3>
-                <p id="loadingTip">Verwende /help um alle verfügbaren Befehle anzuzeigen!</p>
-            </div>
-        </div>
-        
-        <div class="footer-info">
-            <p>© 2024 ZenESX Framework | Version 1.0.0 | Discord: discord.gg/zenscripts</p>
+        <!-- Volume Control -->
+        <div class="volume-control">
+            <div class="volume-label">Lautstärke</div>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="70">
         </div>
     </div>
     
+    <!-- Logo Container -->
+    <div class="logo-container">
+        <img src="logo/logo.png" alt="ZenESX Logo" class="logo-image">
+    </div>
+    
+    <!-- Loading Progress -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div id="loadingProgress" class="loading-progress"></div>
+        </div>
+        <div id="loadingPercentage" class="loading-percentage">0%</div>
+    </div>
+    
+    <!-- Status Updates -->
+    <div class="status-container">
+        <div id="status1" class="status-item">
+            <span class="status-icon">⏳</span>
+            <span class="status-text">Framework wird initialisiert...</span>
+        </div>
+        <div id="status2" class="status-item">
+            <span class="status-icon">🌐</span>
+            <span class="status-text">Verbindung zum Server...</span>
+        </div>
+        <div id="status3" class="status-item">
+            <span class="status-icon">📜</span>
+            <span class="status-text">Erweiterte Scripts werden geladen...</span>
+        </div>
+        <div id="status4" class="status-item">
+            <span class="status-icon">👤</span>
+            <span class="status-text">Spielerdaten werden geladen...</span>
+        </div>
+        <div id="status5" class="status-item">
+            <span class="status-icon">💼</span>
+            <span class="status-text">Jobs & Fraktionen werden synchronisiert...</span>
+        </div>
+        <div id="status6" class="status-item">
+            <span class="status-icon">✅</span>
+            <span class="status-text">Bereit zum Spielen!</span>
+        </div>
+    </div>
+    
+    <!-- Tips -->
+    <div class="tips-container">
+        <div id="loadingTip" class="loading-tip">
+            Verwende /help um alle verfügbaren Befehle anzuzeigen!
+        </div>
+    </div>
+    
+    <!-- Framework Features - Rechts positioniert -->
+    <div class="framework-features">
+        <h3>🚀 ZenESX Framework</h3>
+        
+        <!-- Admin System -->
+        <div class="feature-section">
+            <h4>⚡ Admin System</h4>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">👑</span>
+                    <span class="feature-text">F5 Admin Menu</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">👻</span>
+                    <span class="feature-text">Noclip</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🕶️</span>
+                    <span class="feature-text">Unsichtbar</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💚</span>
+                    <span class="feature-text">Heal</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚀</span>
+                    <span class="feature-text">Teleport</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔧</span>
+                    <span class="feature-text">Spieler verwalten</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance & Backup -->
+        <div class="feature-section">
+            <h4>🛡️ System Tools</h4>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <span class="feature-text">Performance Monitor</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💾</span>
+                    <span class="feature-text">Auto Backup</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <span class="feature-text">Update Checker</span>
+                </div>
+                                        <div class="feature-item">
+                            <span class="feature-icon">🎮</span>
+                            <span class="feature-text">Job System</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎒</span>
+                            <span class="feature-text">ox_inventory</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🛍️</span>
+                            <span class="feature-text">Smart Shops</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📦</span>
+                            <span class="feature-text">Stashes</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚗</span>
+                            <span class="feature-text">Vehicle Storage</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔫</span>
+                            <span class="feature-text">Weapon System</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📦</span>
+                            <span class="feature-text">RAMAZON Delivery</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏗️</span>
+                            <span class="feature-text">Construction Worker</span>
+                        </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏦</span>
+                    <span class="feature-text">Banking System</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏝️</span>
+                    <span class="feature-text">Cayo Perico</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Info -->
+    <div class="footer-info">
+        <p>© 2025 ZenESX Framework | Version 1.0.0 | Discord: discord.gg/zenscripts</p>
+    </div>
+    
+    <!-- Background Music -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="music/musik.mp3" type="audio/mpeg">
+        Dein Browser unterstützt keine Audio-Wiedergabe.
+    </audio>
+    
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

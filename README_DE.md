@@ -56,6 +56,22 @@ Ein vollständiges, erweiterbares ESX-basiertes Framework für FiveM Server mit 
 - **Mansion Gate** - El Rubio's Mansion mit funktionierendem Tor-System
 - **79 Stream-Dateien** - Detaillierte Insel-Modifikationen
 
+### 🚚 **RAMAZON Delivery Job**
+- **Vollständiges Lieferungssystem** - Pakete an verschiedene Standorte liefern
+- **Fahrzeug-Integration** - Spezielle Lieferfahrzeuge für den Job
+- **Verdienst-System** - Einkommen basierend auf gelieferten Paketen
+- **Arbeiter-Verwaltung** - System zur Verwaltung von RAMAZON-Mitarbeitern
+- **Fortschritts-Tracking** - Verfolgung der Lieferungen und Statistiken
+- **Mehrere Standorte** - Verschiedene Lieferpunkte in der Stadt
+
+### 🏗️ **Construction Worker Job**
+- **Vollständiges Bauarbeiter-System** - Verschiedene Bauprojekte in der Stadt
+- **Baustellen-Management** - Mehrere Baustellen mit verschiedenen Aufgaben
+- **Verdienst-System** - Einkommen basierend auf geleisteter Arbeit
+- **Arbeiter-Verwaltung** - System zur Verwaltung von Bauarbeitern
+- **Fortschritts-Tracking** - Verfolgung der Bauprojekte
+- **Material-System** - Baumaterialien und Werkzeuge verwalten
+
 ## 📁 Framework-Struktur
 
 ```
@@ -99,7 +115,34 @@ ZenESX Framework/
 │   ├── 📄 fxmanifest.lua          # Performance Resource
 │   └── 📄 zenesx_performance.lua  # Monitoring-Logik
 │
+├── 🚚 [jobs]/                     # Custom Job System
+│   ├── 📦 ramazon_job/            # RAMAZON Delivery Job
+│   │   ├── 📄 fxmanifest.lua      # Job Resource
+│   │   ├── 📄 rc_ramazon/         # Haupt-Job System
+│   │   ├── 📄 rc_ramazonDelivery/ # Lieferungs-System
+│   │   ├── 📄 rprogress/          # Fortschritts-Bar
+│   │   ├── 📄 pNotify/            # Benachrichtigungen
+│   │   └── 📄 README_DE.md        # Deutsche Dokumentation
+│   └── 🏗️ construction_worker/    # Construction Worker Job
+│       ├── 📄 fxmanifest.lua      # Job Resource
+│       ├── 📄 client/             # Client-Side Scripts
+│       ├── 📄 server/             # Server-Side Scripts
+│       ├── 📄 locales/            # Lokalisierung
+│       ├── 📄 config.lua          # Job-Konfiguration
+│       └── 📄 README_DE.md        # Deutsche Dokumentation
+│
 ├── 💾 zenesx_backup_system/       # Backup-Automatisierung
+│
+├── 📦 [ox]/                       # OX Library & Inventory System
+│   ├── 📦 ox_lib/                 # OX Library System
+│   │   ├── 📄 fxmanifest.lua      # ox_lib Resource
+│   │   └── 📄 init.lua            # Library Initialisierung
+│   └── 🎒 ox_inventory/           # OX Inventory System
+│       ├── 📄 fxmanifest.lua      # ox_inventory Resource
+│       ├── 📄 modules/            # Inventory Module
+│       ├── 📄 data/               # Item-Daten
+│       ├── 📄 locales/            # Lokalisierung
+│       └── 📄 web/                # Web-Interface
 │   ├── 📄 fxmanifest.lua          # Backup System Resource
 │   └── 📄 zenesx_backup.lua       # Backup-Management
 │
@@ -121,7 +164,7 @@ ZenESX Framework/
 3. **Suche:** "ZenESX Framework" 
 4. **Oder Recipe-URL verwenden:** 
    ```
-   [https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
+   [https://github.com/zenscripts/zenesx-framework/raw/main/recipe.yaml]
    ```
 5. **Konfigurieren:** Datenbank, Admin-Einstellungen
 6. **Deployen:** Automatische Installation
@@ -130,7 +173,7 @@ ZenESX Framework/
 
 ```bash
 # Repository klonen
-git clone https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
+git clone https://github.com/zenscripts/zenesx-framework.git
 
 # Resources in FiveM Server kopieren
 cp -r zenesx_* /pfad/zu/fivem/resources/
@@ -306,5 +349,4 @@ add_ace group.helper zenesx.helper allow
 4. **🎮 Genießen:** Dein verbessertes FiveM Server-Erlebnis!
 
 **Happy Role Playing! 🎮✨**
-
 

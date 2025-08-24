@@ -4,9 +4,6 @@
 - 🇩🇪 **[Deutsch](README_DE.md)** - Deutsche Dokumentation
 - 🇺🇸 **[English](README_EN.md)** - English Documentation
 
-install for tx admin: In TX Admin click on Remote URL Template and paste the link there simply copy and paste
-https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml
-
 ---
 
 ## Quick Links / Schnellzugriff
@@ -25,12 +22,12 @@ https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yam
 3. Search: "ZenESX Framework" 
 4. Or use Recipe URL / Oder Recipe-URL verwenden:
    ```
-   [https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml]
+  https://github.com/zen-scripting/ZenESX-Framework/tree/main
    ```
 
 #### **Manual Installation / Manuelle Installation:**
 ```bash
-git clone [https://raw.githubusercontent.com/zen-scripting/ZenESX-Framework/main/recipe.yaml]
+git clone https://github.com/zen-scripting/ZenESX-Framework/blob/main/recipe.yaml
 # See INSTALLATION.md for complete setup / Siehe INSTALLATION.md für vollständige Installation
 ```
 

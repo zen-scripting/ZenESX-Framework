@@ -400,10 +400,10 @@ Citizen.CreateThread(function()
             local markerType = nil
             
             if isNearBank and currentBank then
-                drawCoords = vector3(currentBank[1], currentBank[2], currentBank[3])
+                drawCoords = vector3(currentBank.location[1], currentBank.location[2], currentBank.location[3])
                 markerType = "bank"
             elseif isNearATM and currentATM then
-                drawCoords = vector3(currentATM[1], currentATM[2], currentATM[3])
+                drawCoords = vector3(currentATM.location[1], currentATM.location[2], currentATM.location[3])
                 markerType = "atm"
             end
             
@@ -453,9 +453,9 @@ Citizen.CreateThread(function()
             local drawCoords = nil
             
             if isNearBank and currentBank then
-                drawCoords = vector3(currentBank[1], currentBank[2], currentBank[3])
+                drawCoords = vector3(currentBank.location[1], currentBank.location[2], currentBank.location[3])
             elseif isNearATM and currentATM then
-                drawCoords = vector3(currentATM[1], currentATM[2], currentATM[3])
+                drawCoords = vector3(currentATM.location[1], currentATM.location[2], currentATM.location[3])
             end
             
             if drawCoords then

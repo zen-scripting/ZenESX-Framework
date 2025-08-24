@@ -13,6 +13,7 @@ files {
     'style.css',
     'script.js',
     'music/musik.mp3',
-    'images/logo.png',
-    'images/background.jpg'
+    'logo/logo.png'
 }
+
+lua54 'yes'

@@ -246,10 +246,14 @@ function AdminClient:ToggleInvisible()
     if self.Config.IsInvisible then
         SetEntityVisible(ped, false, false)
         SetLocalPlayerVisibleLocally(true)
-        ESX.ShowNotification('~g~Unsichtbar aktiviert')
+        if ESX and ESX.ShowNotification then
+            ESX.ShowNotification('~g~Unsichtbar aktiviert')
+        end
     else
         SetEntityVisible(ped, true, false)
-        ESX.ShowNotification('~r~Unsichtbar deaktiviert')
+        if ESX and ESX.ShowNotification then
+            ESX.ShowNotification('~r~Unsichtbar deaktiviert')
+        end
     end
 end
 
@@ -262,7 +266,9 @@ function AdminClient:HealPlayer()
     SetEntityHealth(ped, GetEntityMaxHealth(ped))
     SetPedArmour(ped, 100)
     ClearPedBloodDamage(ped)
-    ESX.ShowNotification('~g~Du wurdest geheilt!')
+    if ESX and ESX.ShowNotification then
+        ESX.ShowNotification('~g~Du wurdest geheilt!')
+    end
 end
 
 -- =======================================
@@ -326,7 +332,7 @@ end)
 -- =======================================
 
 Citizen.CreateThread(function()
-    while not ESX.IsPlayerLoaded() do
+    while not (ESX and ESX.IsPlayerLoaded and ESX.IsPlayerLoaded()) do
         Citizen.Wait(100)
     end
     

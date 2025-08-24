@@ -49,11 +49,11 @@ tasks:
   - action: remove_path
     path: ./tmp
 
-  # Download ESX Core
+  # Download ESX Core (from esx-framework organization)
   - action: download_github
     src: https://github.com/esx-framework/esx_core
     ref: master
-    dest: ./resources/[esx]/es_extended
+    dest: ./resources/[esx]/esx_core
 
   # Download Dependencies
   - action: download_github
@@ -76,7 +76,7 @@ tasks:
     ref: master
     dest: ./resources/pma-voice
 
-  # Download ESX Jobs
+  # Download ESX Jobs (only working ones)
   - action: download_github
     src: https://github.com/esx-framework/esx_policejob
     ref: master
@@ -92,12 +92,7 @@ tasks:
     ref: master
     dest: ./resources/[esx]/esx_mechanicjob
 
-  - action: download_github
-    src: https://github.com/esx-framework/esx_taxijob
-    ref: master
-    dest: ./resources/[esx]/esx_taxijob
-
-  # Download ESX Scripts
+  # Download ESX Core Scripts (only working ones)
   - action: download_github
     src: https://github.com/esx-framework/esx_society
     ref: master
@@ -112,66 +107,6 @@ tasks:
     src: https://github.com/esx-framework/esx_shops
     ref: master
     dest: ./resources/[esx]/esx_shops
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_clotheshop
-    ref: master
-    dest: ./resources/[esx]/esx_clotheshop
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_barbershop
-    ref: master
-    dest: ./resources/[esx]/esx_barbershop
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_vehicleshop
-    ref: master
-    dest: ./resources/[esx]/esx_vehicleshop
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_weaponshop
-    ref: master
-    dest: ./resources/[esx]/esx_weaponshop
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_license
-    ref: master
-    dest: ./resources/[esx]/esx_license
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_basicneeds
-    ref: master
-    dest: ./resources/[esx]/esx_basicneeds
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_status
-    ref: master
-    dest: ./resources/[esx]/esx_status
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_datastore
-    ref: master
-    dest: ./resources/[esx]/esx_datastore
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_addonaccount
-    ref: master
-    dest: ./resources/[esx]/esx_addonaccount
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_addoninventory
-    ref: master
-    dest: ./resources/[esx]/esx_addoninventory
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_identity
-    ref: master
-    dest: ./resources/[esx]/esx_identity
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_multicharacter
-    ref: master
-    dest: ./resources/[esx]/esx_multicharacter
 
   # Import Database
   - action: query_database
@@ -197,7 +132,7 @@ tasks:
       ensure "[cayo]/cayo shops"
       ensure "[cayo]/cayo tor"
       ensure "[cayo]/Cayo_Bridge"
-      ensure es_extended
+      ensure esx_core
       ensure oxmysql
       ensure ox_lib
       ensure ox_inventory
@@ -205,22 +140,9 @@ tasks:
       ensure esx_policejob
       ensure esx_ambulancejob
       ensure esx_mechanicjob
-      ensure esx_taxijob
       ensure esx_society
       ensure esx_garage
       ensure esx_shops
-      ensure esx_clotheshop
-      ensure esx_barbershop
-      ensure esx_vehicleshop
-      ensure esx_weaponshop
-      ensure esx_license
-      ensure esx_basicneeds
-      ensure esx_status
-      ensure esx_datastore
-      ensure esx_addonaccount
-      ensure esx_addoninventory
-      ensure esx_identity
-      ensure esx_multicharacter
       add_principal identifier.{{Admin Steam ID}} group.admin
       add_ace group.admin command allow
       add_ace group.admin command.quit deny

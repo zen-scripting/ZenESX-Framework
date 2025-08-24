@@ -259,7 +259,7 @@ Config.UI = {
 -- DEBUG SETTINGS
 -- ========================================
 Config.Debug = {
-    enabled = true,                   -- Enable debug mode
+    enabled = false,                   -- Enable debug mode
     features = {
         showConsoleLogs = false,       -- Show console logs
         showAutoUpdateLogs = false,    -- Show auto-update logs
